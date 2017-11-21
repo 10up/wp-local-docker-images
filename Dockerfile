@@ -9,11 +9,19 @@ RUN apt-get update && apt-get install -y \
 	subversion \
 	wget \
 	libxml2-dev \
-	ssmtp
+	ssmtp \
+	imagemagick \
+	libmagickwand-dev
 
+RUN pecl install imagick
+RUN docker-php-ext-enable imagick
 
 RUN docker-php-ext-install soap
 RUN echo "mailhub=mailcatcher:1025\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf
+
+RUN apt-get remove -y libmagickwand-dev libxml2-dev && \
+	apt-get autoremove -y && \
+	apt-get clean
 
 CMD ["php-fpm"]
 
