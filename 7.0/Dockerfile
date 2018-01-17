@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
 	libxml2-dev \
 	ssmtp \
 	imagemagick \
-	libmagickwand-dev
+	libmagickwand-dev \
+	unzip
 
 RUN pecl install imagick
 RUN docker-php-ext-enable imagick
