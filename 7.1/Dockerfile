@@ -12,10 +12,12 @@ RUN apt-get update && apt-get install -y \
 	ssmtp \
 	imagemagick \
 	libmagickwand-dev \
+	php-pgsql \
 	unzip
 
 RUN pecl install imagick
 RUN docker-php-ext-enable imagick
+RUN docker-php-ext-enable pdo pdo_pgsql
 
 RUN docker-php-ext-install soap
 RUN echo "mailhub=mailcatcher:1025\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf
