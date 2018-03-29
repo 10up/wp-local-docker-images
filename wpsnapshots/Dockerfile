@@ -2,7 +2,8 @@ FROM 10up/phpfpm
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-RUN composer global require 10up/wpsnapshots
+RUN composer global require 10up/wpsnapshots \
+	&& composer clear-cache
 
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 
