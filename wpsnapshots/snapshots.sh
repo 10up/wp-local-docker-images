@@ -10,7 +10,7 @@ maybe_run_wpsnapshots() {
 
         wpsnapshots "$@"
      else
-        echo 'WP Snapshots is not configured, you must run docker-compose wpsnapshots configure <repository>';
+        echo 'WP Snapshots is not configured, you must run ./wpsnapshots.<sh|bat> configure <repository> from the bin/ directory';
         exit 1;
     fi
 }
