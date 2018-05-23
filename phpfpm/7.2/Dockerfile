@@ -13,6 +13,19 @@ RUN apt-get update && apt-get install -y \
 		imagemagick \
 		libmagickwand-dev \
 		unzip \
+		libgearman-dev \
+	&& wget https://github.com/wcgallego/pecl-gearman/archive/master.zip \
+	&& unzip master.zip \
+	&& rm master.zip \
+	&& ( \
+		cd pecl-gearman-master \
+		&& phpize \
+		&& ./configure \
+		&& make -j$(nproc) \
+		&& make install \
+	) \
+	&& rm -r pecl-gearman-master \
+	&& docker-php-ext-enable gearman \
 	&& pecl install imagick \
 	&& docker-php-ext-enable imagick \
 	&& docker-php-ext-install soap \
