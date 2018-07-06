@@ -18,7 +18,9 @@ RUN apt-get update && apt-get install -y \
 	&& echo "mailhub=mailcatcher:1025\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf \
 	&& apt-get remove -y libmagickwand-dev libxml2-dev \
 	&& apt-get autoremove -y \
-	&& apt-get clean
+	&& apt-get clean \
+	&& mkdir /var/www/.wp-cli \
+	&& chown www-data:www-data /var/www/.wp-cli
 
 CMD ["php-fpm"]
 
