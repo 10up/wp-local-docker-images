@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 	&& chown www-data:www-data /var/www/.wp-cli
 	
 RUN XDEBUG=$(find / -name 'xdebug.so' | head -n 1 | tail -n 1) \
-	&& cp $XDEBUG /usr/local/lib/php/extensions/xdebug.so
+	&& ln -s $XDEBUG /usr/local/lib/php/extensions/xdebug.so
 
 CMD ["php-fpm"]
 
