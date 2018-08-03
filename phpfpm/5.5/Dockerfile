@@ -26,6 +26,11 @@ RUN apt-get update && apt-get install -y \
 RUN XDEBUG=$(find /usr/local/lib/php -name 'xdebug.so' | head -n 1 | tail -n 1) \
 	&& ln -s $XDEBUG /usr/local/lib/php/extensions/xdebug.so
 
+COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]
 
 EXPOSE 9000
