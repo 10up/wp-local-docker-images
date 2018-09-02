@@ -25,4 +25,7 @@ if [ ! $www_uid -eq 0 ]; then
     fix_linux_internal_host
 fi
 
+mkdir -p /var/www/.wp-cli/cache
+chown www-data:www-data /var/www/.wp-cli/cache
+
 exec "$@"
