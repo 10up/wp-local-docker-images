@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Checking USER ID"
-www_uid=`stat -c "%u" /var/www/html`
-www_gid=`stat -c "%g" /var/www/html`
+www_uid=`stat -c "%u" /home/wpsnapshots/.wpsnapshots`
+www_gid=`stat -c "%g" /home/wpsnapshots/.wpsnapshots`
 
 echo "Host user is $www_uid:$www_gid"
 
@@ -12,4 +12,4 @@ if [ ! $www_uid -eq 0 ]; then
 	groupmod -g $www_gid wpsnapshots
 fi
 
-exec su - wpsnapshots -c "$@"
+exec su - wpsnapshots -c "cd /var/www/html; /home/wpsnapshots/.composer/vendor/bin/wpsnapshots $*"
