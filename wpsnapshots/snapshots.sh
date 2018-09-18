@@ -5,11 +5,7 @@ wpsnapshots='/home/wpsnapshots/.composer/vendor/bin/wpsnapshots'
 wpdir='/var/www/html'
 
 maybe_run_wpsnapshots() {
-    if [ -e /wpsnapshots/.wpsnapshots.json ]; then
-
-        if [ ! -e /home/wpsnapshots/.wpsnapshots.json ]; then
-            ln -s /wpsnapshots/.wpsnapshots.json /home/wpsnapshots/.wpsnapshots.json
-        fi
+    if [ -e /home/wpsnapshots/.wpsnapshots/config.json ]; then
 
         su - wpsnapshots -c  "cd $wpdir; $wpsnapshots $*"
      else
@@ -21,7 +17,6 @@ maybe_run_wpsnapshots() {
 case "$1" in
     configure)
         su - wpsnapshots -c "$wpsnapshots $*"
-        mv /home/wpsnapshots/.wpsnapshots.json /wpsnapshots/.wpsnapshots.json
         ;;
     *)
         maybe_run_wpsnapshots "$@"
