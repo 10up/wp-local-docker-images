@@ -107,6 +107,7 @@ server {
         return 503;
     }
 
+    client_max_body_size 100m;
 }
 
 {{ if (and (exists "/etc/nginx/certs/default.crt") (exists "/etc/nginx/certs/default.key")) }}
@@ -131,6 +132,8 @@ server {
 	ssl_session_tickets off;
 	ssl_certificate /etc/nginx/certs/default.crt;
 	ssl_certificate_key /etc/nginx/certs/default.key;
+
+	client_max_body_size 100m;
 }
 {{ end }}
 
@@ -217,6 +220,9 @@ server {
 	listen [::]:80 {{ $default_server }};
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
+
+	client_max_body_size 100m;
+
 	return 301 https://$host$request_uri;
 }
 {{ end }}
@@ -313,6 +319,8 @@ server {
 		include /etc/nginx/vhost.d/default_location;
 		{{ end }}
 	}
+
+	client_max_body_size 100m;
 }
 
 {{ end }}
@@ -359,6 +367,8 @@ server {
 		include /etc/nginx/vhost.d/default_location;
 		{{ end }}
 	}
+
+	client_max_body_size 100m;
 }
 
 {{ if (and (not $is_https) (exists "/etc/nginx/certs/default.crt") (exists "/etc/nginx/certs/default.key")) }}
@@ -370,6 +380,8 @@ server {
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
 	return 500;
+
+	client_max_body_size 100m;
 
 	ssl_certificate /etc/nginx/certs/default.crt;
 	ssl_certificate_key /etc/nginx/certs/default.key;
