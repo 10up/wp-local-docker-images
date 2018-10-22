@@ -5,7 +5,7 @@ RUN useradd wpsnapshots && \
     mkdir -p /wpsnapshots && \
     chown -R wpsnapshots:wpsnapshots /home/wpsnapshots && \
     chown -R wpsnapshots:wpsnapshots /wpsnapshots && \
-    su - wpsnapshots -c "composer global require 10up/wpsnapshots:dev-master" \
+    su - wpsnapshots -c "composer global require 10up/wpsnapshots" \
 	&& su - wpsnapshots -c "composer clear-cache"
 
 ENV PATH="/home/wpsnapshots/.composer/vendor/bin:${PATH}"
