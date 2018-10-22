@@ -5,7 +5,7 @@ RUN useradd wpsnapshots && \
     mkdir -p /var/www/html && \
     chown -R wpsnapshots:wpsnapshots /home/wpsnapshots && \
     chown -R wpsnapshots:wpsnapshots /var/www/html && \
-    su - wpsnapshots -c "composer global require 10up/wpsnapshots:dev-master" \
+    su - wpsnapshots -c "composer global require 10up/wpsnapshots" \
 	&& su - wpsnapshots -c "composer clear-cache"
 
 COPY entrypoint.sh /entrypoint.sh
