@@ -14,11 +14,12 @@ RUN apt-get update && apt-get install -y \
 		libmagickwand-dev \
 		unzip \
 		iproute2 \
+		libicu-dev \
 	&& pecl install imagick \
 	&& docker-php-ext-enable imagick \
-	&& docker-php-ext-install soap \
+	&& docker-php-ext-install soap intl \
 	&& echo "mailhub=mailcatcher:1025\nUseTLS=NO\nFromLineOverride=YES" > /etc/ssmtp/ssmtp.conf \
-	&& apt-get remove -y libmagickwand-dev libxml2-dev \
+	&& apt-get remove -y libmagickwand-dev libxml2-dev libicu-dev \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& mkdir /var/www/.wp-cli \
