@@ -1,6 +1,6 @@
 FROM johnpbloch/phpfpm:7.0
 
-RUN curl -L https://phar.phpunit.de/phpunit.phar > /tmp/phpunit.phar \
+RUN curl -L https://phar.phpunit.de/phpunit-6.phar > /tmp/phpunit.phar \
 	&& chmod +x /tmp/phpunit.phar \
 	&& mv /tmp/phpunit.phar /usr/local/bin/phpunit
 
