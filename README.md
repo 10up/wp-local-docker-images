@@ -2,7 +2,7 @@
 
 > Images used by [WP Local Docker](https://github.com/10up/wp-local-docker)
 
-[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level)
+[![Support Level](https://img.shields.io/badge/support-active-green.svg)](#support-level) [![MIT License](https://img.shields.io/github/license/10up/wp-local-docker-images.svg)](https://github.com/10up/wp-local-docker-images/blob/master/LICENSE.md)
 
 ## Overview
 
