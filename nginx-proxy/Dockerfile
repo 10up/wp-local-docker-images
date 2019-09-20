@@ -1,4 +1,4 @@
-FROM jwilder/nginx-proxy
+FROM jwilder/nginx-proxy:0.7.0
 
 COPY certs/ /etc/nginx/certs
 COPY nginx.tmpl /app/nginx.tmpl
