@@ -7,8 +7,19 @@
 ## Overview
 
 Available on Dockerhub: 
-[10up/phpfpm](https://hub.docker.com/r/10up/phpfpm/)
+[10up/nginx-proxy](https://hub.docker.com/r/10up/nginx-proxy/)
 [10up/wpsnapshots](https://hub.docker.com/r/10up/wpsnapshots)
+[10up/phpfpm](https://hub.docker.com/r/10up/phpfpm/) - deprecated, do not use
+
+## Building
+
+In each directory you can issue:
+
+`docker build . -t <your tag>`
+
+If you want to build a multiarch version (currently only nginx-proxy supports this) you might run:
+
+`docker buildx build . -t <your tag> --platform linux/amd64,linux/arm64`
 
 ## Support Level
 
